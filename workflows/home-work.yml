@@ -1,5 +1,5 @@
-# file: .github/workflows/home.yml
-name: home
+# file: .github/workflows/home-work.yml
+name: home-work
 # on – определяет события, которые запускают воркфлоу
 on: push
 jobs:
@@ -13,7 +13,15 @@ jobs:
       # checkout — клонирует репозиторий
       - uses: actions/checkout@v4
       # run – произвольная bash-команда
-      # ls -la выведет содержимое текущего репозитория
-      - run: make setup
-      - run: make test
-      - run: make link
+
+      - name: setup
+        uses: actions/checkout@v4
+        run: make setup
+
+      - name: test
+        uses: actions/checkout@v4
+        run: make test
+
+      - name: link
+        uses: actions/checkout@v4
+        run: make link
